@@ -10,7 +10,7 @@ const sidebarHTML = `
     <div class="meta-item"><span class="meta-icon">📞</span> +92 308 0468982</div>
   </div>
   <ul class="contact-links">
-    <li><a href="https://linkedin.com/in/hammad-ahmad" target="_blank">🔗 LinkedIn</a></li>
+    <li><a href="https://www.linkedin.com/in/hammad-ahmad-b91ba0247" target="_blank">🔗 LinkedIn</a></li>
     <li><a href="https://github.com/Hamikha" target="_blank">🐙 GitHub</a></li>
     <li><a href="mailto:hamikhan273@gmail.com">📧 Email</a></li>
   </ul>
