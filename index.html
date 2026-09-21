@@ -1,83 +1,580 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Hammad Ahmad — AI Engineer</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="AI engineer building production voice agents, RAG pipelines and agentic systems. MS Biosystems Engineering researcher at Auburn University working on LiDAR-based tree inventory and a digital forest twin." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://hamikha.github.io/HammadAhmad_Portfolio/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hammad Ahmad — AI Engineer" />
+  <meta property="og:description" content="Production voice agents and RAG systems. Now turning LiDAR scans of forests into a digital twin at Auburn University." />
+  <meta property="og:url" content="https://hamikha.github.io/HammadAhmad_Portfolio/" />
+  <meta property="og:image" content="https://hamikha.github.io/HammadAhmad_Portfolio/assets/img/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="modulepreload" href="assets/js/scan.js" />
+  <link rel="modulepreload" href="assets/js/cloud.js" />
+  <script>document.documentElement.className = 'js';</script>
+  <script type="module" src="assets/js/main.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hammad Ahmad",
+    "jobTitle": "AI Engineer",
+    "url": "https://hamikha.github.io/HammadAhmad_Portfolio/",
+    "image": "https://hamikha.github.io/HammadAhmad_Portfolio/assets/img/portrait.webp",
+    "email": "mailto:hamikhan273@gmail.com",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Auburn University" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Engineering and Technology, Peshawar" },
+    "knowsAbout": ["Voice AI", "Retrieval-augmented generation", "LLM agents", "LiDAR", "Digital twins"],
+    "sameAs": ["https://www.linkedin.com/in/hammad-ahmad-b91ba0247", "https://github.com/Hamikha"]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+
   <header class="site-header">
-    <div class="header-inner">
-      <span class="brand">Hammad Ahmad</span>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">About</a></li>
-          <li><a href="experience.html">Experience</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="certificates.html">Certificates</a></li>
-          <li><a href="qualification.html">Qualification</a></li>
+    <div class="wrap header-inner">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Hammad Ahmad</a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#research" data-num="01">Research</a></li>
+          <li><a href="#about" data-num="02">About</a></li>
+          <li><a href="#experience" data-num="03">Experience</a></li>
+          <li><a href="#projects" data-num="04">Projects</a></li>
+          <li><a href="#skills" data-num="05">Skills</a></li>
+          <li><a href="#education" data-num="06">Education</a></li>
+          <li><a href="#contact" data-num="07">Contact</a></li>
         </ul>
+        <span class="nav-marker" aria-hidden="true"></span>
+        <p class="nav-foot mono"><a href="mailto:hamikhan273@gmail.com">hamikhan273@gmail.com</a></p>
       </nav>
+      <button class="menu-btn mono" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-label">Menu</span><span class="menu-icon" aria-hidden="true"></span>
+      </button>
     </div>
+    <span class="progress" aria-hidden="true"></span>
   </header>
 
-  <main class="main-layout">
-    <aside class="sidebar"></aside>
-    <section class="page-content">
-      <h1 class="fade-in">About Me</h1>
-      <p class="page-subtitle fade-in">AI Engineer · Voice AI · RAG Systems · LLM Applications</p>
+  <canvas class="scan" id="scan" aria-hidden="true"></canvas>
+  <div class="probe" aria-hidden="true"><span class="probe-ring"></span><span class="probe-read mono"></span></div>
+  <div class="dbh mono" aria-hidden="true"><span class="dbh-line"></span><span class="dbh-text"></span></div>
 
-      <div class="stats-row">
-        <div class="stat-card fade-in">
-          <div class="stat-num">3+</div>
-          <div class="stat-desc">Years of Experience</div>
-        </div>
-        <div class="stat-card fade-in">
-          <div class="stat-num">10+</div>
-          <div class="stat-desc">Production Projects</div>
-        </div>
-        <div class="stat-card fade-in">
-          <div class="stat-num">3.89</div>
-          <div class="stat-desc">CGPA · Batch Topper #1</div>
-        </div>
-        <div class="stat-card fade-in">
-          <div class="stat-num">10+</div>
-          <div class="stat-desc">Live Products</div>
+  <main id="main">
+    <!-- 00 · Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <p class="hero-kicker mono"><span class="dot" aria-hidden="true"></span>AI engineer · MS researcher, Auburn University</p>
+        <h1 class="hero-title" id="hero-title">
+          <span class="line"><span>Hammad</span></span>
+          <span class="line"><span>Ahmad</span></span>
+        </h1>
+        <p class="hero-lede">I build <strong>real-time voice agents, RAG pipelines and agentic systems</strong> that run in production. Now I'm at Auburn University, turning LiDAR scans of forests into a digital twin.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#projects">Selected work</a>
+          <a class="text-link" href="#research">Current research <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-
-      <div class="about-text">
-        <p class="fade-in">
-          I'm an AI Engineer with 3+ years of specialized experience in Generative AI and Machine Learning. I graduated with a B.Sc. in Computer Systems Engineering from <a href="https://www.uetpeshawar.edu.pk/" target="_blank">UET Peshawar</a> in 2025, finishing as Batch Topper #1 with a 3.89 CGPA.
-        </p>
-        <p class="fade-in">
-          My core focus is building production-ready Voice AI systems and RAG pipelines. I've shipped real-time bidirectional audio platforms (web + phone), multi-tenant chatbots for the finance and healthcare sectors, and agentic systems for calendar automation, social media, and crypto tracking — deployed on AWS, Azure, and GCP.
-        </p>
-        <p class="fade-in">
-          Currently at Sparkix Technologies, I work across the full AI stack: from designing RAG architectures and fine-tuning LLM prompts to optimizing latency and managing cloud deployments. Previously I interned at CODE Informatics, contributed to AI model optimization for an Australian client using GraphRAG and Neo4j, and delivered freelance agentic AI solutions on Upwork.
-        </p>
-        <p class="fade-in">
-          I hold specializations from DeepLearning.AI in Machine Learning, Deep Learning, and NLP — alongside certifications in LangChain, LlamaIndex, and Generative AI from Activeloop and Udemy.
-        </p>
+      <div class="hud wrap mono" aria-hidden="true">
+        <p class="hud-l"><span class="hud-status">Scanning</span><span class="hud-sep">/</span><span class="hud-count">0</span> pts</p>
+        <p class="hud-r"><span>32.6099° N, 85.4808° W</span><span class="hud-hint">Drag to orbit · Scroll to segment</span></p>
       </div>
+    </section>
 
-      <h2 class="section-heading fade-in">Research Interests</h2>
-      <ul class="interests-list">
-        <li class="fade-in">Generative AI & RAG Architectures</li>
-        <li class="fade-in">Voice AI & Realtime Streaming</li>
-        <li class="fade-in">Conversational AI & LLM Agents</li>
-        <li class="fade-in">Natural Language Processing</li>
-        <li class="fade-in">Computer Vision & Robotics</li>
-        <li class="fade-in">AI in Healthcare Applications</li>
-        <li class="fade-in">Graph Neural Networks & Knowledge Graphs</li>
-        <li class="fade-in">Explainable & Ethical AI</li>
-      </ul>
+    <!-- 01 · Research -->
+    <section class="research" id="research" aria-labelledby="research-title">
+      <div class="research-stage">
+        <div class="research-pin">
+          <div class="wrap research-grid">
+            <div class="research-copy">
+              <p class="eyebrow mono"><span class="num">01</span>Now · Research</p>
+              <h2 class="h2 h2-research" id="research-title"><span class="h2-text">Building a digital twin of the forest.</span><span class="sweep" aria-hidden="true"></span></h2>
+              <p class="research-body">Since Fall 2026 I've been an MS student in Biosystems Engineering at <a href="https://eng.auburn.edu/bsen/" target="_blank" rel="noopener">Auburn University</a>, working as a Graduate Research Assistant under <a href="https://eng.auburn.edu/directory/hss0044" target="_blank" rel="noopener">Dr.&nbsp;Harman Singh Sangha</a>. My research uses LiDAR for tree inventory and to build a digital twin of the forest.</p>
+              <p class="steps-label mono">What you're looking at</p>
+              <ol class="steps">
+                <li class="step is-active" data-step="1">
+                  <span class="step-n mono">01</span><span class="step-t">Scan</span>
+                  <p class="step-d">A terrestrial laser scanner sweeps the stand and records every surface it hits as a 3D point.</p>
+                </li>
+                <li class="step" data-step="2">
+                  <span class="step-n mono">02</span><span class="step-t">Segment</span>
+                  <p class="step-d">Wood is separated from leaves, so each stem can be measured: height and diameter at breast height.</p>
+                </li>
+                <li class="step" data-step="3">
+                  <span class="step-n mono">03</span><span class="step-t">Twin</span>
+                  <p class="step-d">Every tree becomes a record in a digital model of the whole plot that can be measured again over time.</p>
+                </li>
+              </ol>
+              <p class="fine mono">Illustrative point cloud, generated in your browser</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · About -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow mono"><span class="num">02</span>About</p>
+          <h2 class="h2" id="about-title"><span class="h2-text">3+ years shipping AI that people talk to. Now I'm pointing it at forests.</span><span class="sweep" aria-hidden="true"></span></h2>
+        </div>
+        <div class="about-grid">
+          <figure class="portrait reveal">
+            <picture>
+              <source srcset="assets/img/portrait.avif" type="image/avif" />
+              <img src="assets/img/portrait.webp" width="553" height="546" alt="Portrait of Hammad Ahmad" loading="lazy" decoding="async" />
+            </picture>
+            <figcaption class="mono">Auburn, Alabama</figcaption>
+          </figure>
+          <div class="about-copy">
+            <p class="reveal">I'm an AI engineer with 3+ years of experience in generative AI and machine learning. I graduated in 2025 with a B.Sc. in Computer Systems Engineering from <a href="https://www.uetpeshawar.edu.pk/" target="_blank" rel="noopener">UET Peshawar</a>, ranked first in my cohort with a 3.89 CGPA.</p>
+            <p class="reveal">My core focus has been production voice AI and RAG. I've shipped real-time bidirectional audio platforms for web and phone, multi-tenant chatbots for the finance and healthcare sectors, and agentic systems for calendar automation, social media and crypto tracking, deployed on AWS, Azure and GCP.</p>
+            <p class="reveal">At Sparkix Technologies I work across the full AI stack, from RAG architecture and prompt design to latency optimization and cloud deployment. Along the way I interned at CODE Informatics, optimized AI models for an Australian client with GraphRAG and Neo4j, and delivered agentic AI work on Upwork.</p>
+
+            <dl class="stats reveal">
+              <div class="stat"><dt class="mono">Years in production AI</dt><dd>3<span>+</span></dd></div>
+              <div class="stat"><dt class="mono">Production projects</dt><dd>10<span>+</span></dd></div>
+              <div class="stat"><dt class="mono">Rank in cohort · CGPA 3.89</dt><dd><span>#</span>1</dd></div>
+            </dl>
+
+            <div class="interests reveal">
+              <h3 class="mono sub-label">Research interests</h3>
+              <ul>
+                <li>LiDAR &amp; 3D sensing</li>
+                <li>AI for forestry &amp; digital twins</li>
+                <li>Generative AI &amp; RAG architectures</li>
+                <li>Voice AI &amp; realtime streaming</li>
+                <li>Conversational AI &amp; LLM agents</li>
+                <li>Natural language processing</li>
+                <li>Computer vision &amp; robotics</li>
+                <li>AI in healthcare</li>
+                <li>Graph neural networks &amp; knowledge graphs</li>
+                <li>Explainable &amp; ethical AI</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · Experience -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow mono"><span class="num">03</span>Experience · 5 roles since 2024</p>
+          <h2 class="h2" id="experience-title"><span class="h2-text">Experience</span><span class="sweep" aria-hidden="true"></span></h2>
+        </div>
+        <ol class="xp">
+          <li class="xp-item reveal is-current" id="x-auburn">
+            <p class="xp-when mono">Fall 2026 — Present</p>
+            <div class="xp-main">
+              <h3 class="xp-role">Graduate Research Assistant</h3>
+              <p class="xp-org">Auburn University · Department of Biosystems Engineering</p>
+              <ul class="xp-points">
+                <li>LiDAR-based tree inventory and a digital forest twin, under Dr. Harman Singh Sangha.</li>
+              </ul>
+              <p class="tags mono">LiDAR / Tree inventory / Digital twin</p>
+            </div>
+          </li>
+          <li class="xp-item reveal is-current" id="x-sparkix">
+            <p class="xp-when mono">Jan 2025 — Present</p>
+            <div class="xp-main">
+              <h3 class="xp-role">AI Engineer</h3>
+              <p class="xp-org">Sparkix Technologies</p>
+              <ul class="xp-points">
+                <li>Developed and deployed an AI-powered chatbot for the finance sector with persistent memory for personalized customer support.</li>
+                <li>Engineered backend systems for a LinkedIn-like platform with dual recommendation engines: job matching and candidate recommendations.</li>
+                <li>Optimized a Django-based chatbot backend, cutting database insertion latency from 32s to 8s, a 4× improvement in throughput.</li>
+                <li>Built and deployed production voice AI agents on the OpenAI Realtime API with low-latency bidirectional audio streaming.</li>
+              </ul>
+              <p class="tags mono">RAG / LangChain / LlamaIndex / OpenAI Realtime API / Voice agents / PostgreSQL</p>
+            </div>
+          </li>
+          <li class="xp-item reveal" id="x-upwork">
+            <p class="xp-when mono">Feb 2025 — Mar 2025</p>
+            <div class="xp-main">
+              <h3 class="xp-role">Agentic AI Engineer</h3>
+              <p class="xp-org">Upwork · US-based client</p>
+              <ul class="xp-points">
+                <li>Delivered an end-to-end agentic AI solution for crypto airdrop tracking with automated email notifications.</li>
+                <li>Built custom automation scripts integrated with database backends using the Phi framework.</li>
+              </ul>
+              <p class="tags mono">Python / Phi framework / Automation / Database integration</p>
+            </div>
+          </li>
+          <li class="xp-item reveal" id="x-australia">
+            <p class="xp-when mono">Sep 2024 — Feb 2025</p>
+            <div class="xp-main">
+              <h3 class="xp-role">AI Model Optimization Engineer</h3>
+              <p class="xp-org">Australian client · Contract</p>
+              <ul class="xp-points">
+                <li>Collaborated with the client to fine-tune AI models for their specific use case, with regular bi-weekly stakeholder calls.</li>
+                <li>Implemented two Neo4j graph databases and applied GraphRAG to strengthen data relationships and query performance.</li>
+                <li>Built custom web-scraping pipelines to populate the knowledge graph with structured domain data.</li>
+              </ul>
+              <p class="tags mono">Neo4j / GraphRAG / Python / Web scraping</p>
+            </div>
+          </li>
+          <li class="xp-item reveal" id="x-code">
+            <p class="xp-when mono">Jul 2024 — Dec 2024</p>
+            <div class="xp-main">
+              <h3 class="xp-role">Technical Intern</h3>
+              <p class="xp-org">CODE Informatics</p>
+              <ul class="xp-points">
+                <li>Contributed to FOCUSMATE, an AI tool that uses computer vision to help autistic individuals reduce social anxiety and improve eye contact.</li>
+                <li>Deployed pre-trained LLMs locally with FastAPI and Docker for internal chatbot initiatives.</li>
+                <li>Applied RAG techniques to improve chatbot relevance and accuracy for domain-specific queries.</li>
+              </ul>
+              <p class="tags mono">FastAPI / Docker / LLMs / RAG / Computer vision</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 04 · Projects -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow mono"><span class="num">04</span>Projects · 12 shown, 2 live</p>
+          <h2 class="h2" id="projects-title"><span class="h2-text">Selected work</span><span class="sweep" aria-hidden="true"></span></h2>
+        </div>
+
+        <div class="filters reveal" role="group" aria-label="Filter projects by category">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">All <span class="mono">12</span></button>
+          <button class="chip" type="button" data-filter="voice" aria-pressed="false">Voice AI <span class="mono">2</span></button>
+          <button class="chip" type="button" data-filter="nlp" aria-pressed="false">NLP &amp; Agents <span class="mono">5</span></button>
+          <button class="chip" type="button" data-filter="ml" aria-pressed="false">ML / DL <span class="mono">5</span></button>
+          <p class="filter-status sr-only" aria-live="polite"></p>
+        </div>
+
+        <ol class="pj-list">
+          <li class="pj reveal" id="p-grace" data-cat="voice">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-grace">
+              <span class="pj-n mono">01</span><span class="pj-name">Grace AI</span><span class="pj-sum">Multi-tenant voice AI and automated scheduling platform</span><span class="pj-cat mono">Voice AI</span><span class="pj-live mono">Live</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-grace"><div class="pj-inner">
+              <p>Production-grade multi-tenant voice AI and automated scheduling platform. Bidirectional audio over the web (Socket.IO) and phone (Twilio), custom VAD and barge-in handling, and calendar integrations with Google, Outlook and Unipile.</p>
+              <p class="tags mono">OpenAI Realtime API / Twilio / Qdrant / FastAPI / ElevenLabs</p>
+              <a class="text-link" href="https://www.graceai.com.au" target="_blank" rel="noopener">graceai.com.au <span aria-hidden="true">↗</span></a>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-oper8" data-cat="voice">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-oper8">
+              <span class="pj-n mono">02</span><span class="pj-name">Oper8</span><span class="pj-sum">Autonomous voice AI and email assistant for business automation</span><span class="pj-cat mono">Voice AI</span><span class="pj-live mono">Live</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-oper8"><div class="pj-inner">
+              <p>Autonomous voice AI and email chatbot for multi-channel business automation. The email assistant classifies queries with GPT-4-mini, runs tool-calling loops, books appointments and replies through the Unipile API. Real-time phone and web voice agents use ElevenLabs TTS.</p>
+              <p class="tags mono">GPT-4 / Qdrant / Socket.IO / Twilio / Unipile</p>
+              <a class="text-link" href="https://oper8.ae" target="_blank" rel="noopener">oper8.ae <span aria-hidden="true">↗</span></a>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-civil" data-cat="nlp">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-civil">
+              <span class="pj-n mono">03</span><span class="pj-name">Civil Security</span><span class="pj-sum">Multimodal agent answering questions on US law</span><span class="pj-cat mono">NLP &amp; Agents</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-civil"><div class="pj-inner">
+              <p>Multimodal AI agent that accepts text and voice input and gives real-time answers on US law from a structured knowledge base with RAG retrieval.</p>
+              <p class="tags mono">Voice AI / RAG / LangChain / Knowledge base</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-vyral" data-cat="nlp">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-vyral">
+              <span class="pj-n mono">04</span><span class="pj-name">Vyral-AI</span><span class="pj-sum">Automated customer replies on Instagram, Facebook and TikTok</span><span class="pj-cat mono">NLP &amp; Agents</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-vyral"><div class="pj-inner">
+              <p>Automation platform that lets organizations respond to customer queries on Instagram, Facebook and TikTok with timely, product-aware answers at scale.</p>
+              <p class="tags mono">LLMs / Social media APIs / RAG / Automation</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-illumine" data-cat="nlp">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-illumine">
+              <span class="pj-n mono">05</span><span class="pj-name">Illumine</span><span class="pj-sum">Finance chatbot with persistent conversation memory</span><span class="pj-cat mono">NLP &amp; Agents</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-illumine"><div class="pj-inner">
+              <p>Finance-focused chatbot with persistent conversation memory. It gives context-aware answers to financial queries by remembering prior interactions across sessions.</p>
+              <p class="tags mono">LangChain / Memory / OpenAI / Finance</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-monetiza" data-cat="nlp">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-monetiza">
+              <span class="pj-n mono">06</span><span class="pj-name">Monetiza</span><span class="pj-sum">Customer-support chatbot over a MySQL product database</span><span class="pj-cat mono">NLP &amp; Agents</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-monetiza"><div class="pj-inner">
+              <p>Customer support chatbot backed by a MySQL database, giving accurate, context-aware answers to product queries through structured data retrieval.</p>
+              <p class="tags mono">LLMs / MySQL / RAG</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-chess" data-cat="nlp">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-chess">
+              <span class="pj-n mono">07</span><span class="pj-name">AI Chess Agent</span><span class="pj-sum">Play chess against an AI through natural language</span><span class="pj-cat mono">NLP &amp; Agents</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-chess"><div class="pj-inner">
+              <p>Real-time chess-playing chatbot that lets users play against an AI opponent using strategic move algorithms and natural-language interaction.</p>
+              <p class="tags mono">AI agents / LLMs / Python</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-noair" data-cat="ml">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-noair">
+              <span class="pj-n mono">08</span><span class="pj-name">Noair Lab</span><span class="pj-sum">LinkedIn-style platform with post and people recommendations</span><span class="pj-cat mono">ML / DL</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-noair"><div class="pj-inner">
+              <p>LinkedIn-type platform with post recommendations based on user interests and "People You May Know" suggestions from graph-based algorithms.</p>
+              <p class="tags mono">Recommendation engine / ML / PostgreSQL</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-talent" data-cat="ml">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-talent">
+              <span class="pj-n mono">09</span><span class="pj-name">Talent-loft</span><span class="pj-sum">Two-way job and candidate recommendation engine</span><span class="pj-cat mono">ML / DL</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-talent"><div class="pj-inner">
+              <p>Bidirectional recruitment engine that recommends jobs to candidates from their resumes and surfaces matching candidates to employers from job postings.</p>
+              <p class="tags mono">NLP / ML / Embeddings / Matching</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-disease" data-cat="ml">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-disease">
+              <span class="pj-n mono">10</span><span class="pj-name">Disease Detection &amp; Treatment</span><span class="pj-sum">ML diagnosis paired with generative AI consultations</span><span class="pj-cat mono">ML / DL</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-disease"><div class="pj-inner">
+              <p>Hybrid system that combines ML disease detection with pre-trained models and generative AI for personalized medical consultations that mimic a doctor's expertise.</p>
+              <p class="tags mono">ML / RAG / Generative AI / Healthcare</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-card" data-cat="ml">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-card">
+              <span class="pj-n mono">11</span><span class="pj-name">Card-AI</span><span class="pj-sum">Structured data extraction from Pokémon card images</span><span class="pj-cat mono">ML / DL</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-card"><div class="pj-inner">
+              <p>AI-powered information extraction for Pokémon cards: pulls structured data from card images with computer vision and deep learning.</p>
+              <p class="tags mono">Computer vision / Deep learning / OCR</p>
+            </div></div>
+          </li>
+          <li class="pj reveal" id="p-neuro" data-cat="ml">
+            <h3 class="pj-h"><button class="pj-toggle" type="button" aria-expanded="false" aria-controls="pj-neuro">
+              <span class="pj-n mono">12</span><span class="pj-name">NeuroSpeakMate</span><span class="pj-sum">Final-year project: communication support for non-verbal autistic individuals</span><span class="pj-cat mono">ML / DL</span><span class="pj-icon" aria-hidden="true"></span>
+            </button></h3>
+            <div class="pj-body" id="pj-neuro"><div class="pj-inner">
+              <p>Final-year project. An AI platform for non-verbal autistic individuals with emotion detection, LLM-driven interaction and multimodal expression through voice, text and gesture.</p>
+              <p class="tags mono">Deep learning / Emotion detection / LLM / Computer vision</p>
+            </div></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 05 · Skills -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow mono"><span class="num">05</span>Skills · 58 tools in 7 areas</p>
+          <h2 class="h2" id="skills-title"><span class="h2-text">Toolkit</span><span class="sweep" aria-hidden="true"></span></h2>
+          <p class="section-note reveal">Skills with a count link to the projects and roles where I used them.</p>
+        </div>
+        <div class="sk-groups">
+          <div class="sk-group reveal">
+            <h3 class="sk-title mono">Voice AI &amp; realtime</h3>
+            <ul class="sk-list">
+              <li><span class="sk" data-ev="p-grace x-sparkix">OpenAI Realtime API</span></li>
+              <li><span class="sk">Azure Realtime API</span></li>
+              <li><span class="sk" data-ev="p-grace p-oper8">ElevenLabs TTS</span></li>
+              <li><span class="sk">Google TTS / STT</span></li>
+              <li><span class="sk" data-ev="p-grace p-oper8">Twilio Media Streams</span></li>
+              <li><span class="sk" data-ev="p-grace p-oper8">WebSockets (Socket.IO)</span></li>
+              <li><span class="sk" data-ev="p-grace">VAD / barge-in handling</span></li>
+              <li><span class="sk">µ-law / PCM transcoding</span></li>
+            </ul>
+          </div>
+          <div class="sk-group reveal">
+            <h3 class="sk-title mono">LLMs &amp; AI frameworks</h3>
+            <ul class="sk-list">
+              <li><span class="sk" data-ev="p-civil p-illumine x-sparkix">LangChain</span></li>
+              <li><span class="sk" data-ev="x-sparkix">LlamaIndex</span></li>
+              <li><span class="sk">LangGraph</span></li>
+              <li><span class="sk" data-ev="p-oper8 p-illumine">OpenAI API</span></li>
+              <li><span class="sk" data-ev="p-civil p-vyral p-monetiza p-disease x-sparkix x-code">RAG architectures</span></li>
+              <li><span class="sk" data-ev="x-australia">GraphRAG</span></li>
+              <li><span class="sk" data-ev="x-upwork">Phi framework</span></li>
+              <li><span class="sk">Hugging Face</span></li>
+              <li><span class="sk">Multi-agent systems</span></li>
+            </ul>
+          </div>
+          <div class="sk-group reveal">
+            <h3 class="sk-title mono">Backend</h3>
+            <ul class="sk-list">
+              <li><span class="sk" data-ev="p-chess x-upwork x-australia">Python</span></li>
+              <li><span class="sk" data-ev="p-grace x-code">FastAPI</span></li>
+              <li><span class="sk">Flask</span></li>
+              <li><span class="sk" data-ev="x-sparkix">Django</span></li>
+              <li><span class="sk">REST APIs</span></li>
+              <li><span class="sk" data-ev="p-grace p-oper8">Unipile API</span></li>
+              <li><span class="sk">C / C++</span></li>
+            </ul>
+          </div>
+          <div class="sk-group reveal">
+            <h3 class="sk-title mono">Machine learning &amp; deep learning</h3>
+            <ul class="sk-list">
+              <li><span class="sk">Supervised learning</span></li>
+              <li><span class="sk">Unsupervised learning</span></li>
+              <li><span class="sk" data-ev="p-talent">NLP</span></li>
+              <li><span class="sk">Regression &amp; predictive modeling</span></li>
+              <li><span class="sk">Clustering</span></li>
+              <li><span class="sk">CNNs</span></li>
+              <li><span class="sk">Transfer learning</span></li>
+              <li><span class="sk">MLflow</span></li>
+            </ul>
+          </div>
+          <div class="sk-group reveal">
+            <h3 class="sk-title mono">Computer vision</h3>
+            <ul class="sk-list">
+              <li><span class="sk">OpenCV</span></li>
+              <li><span class="sk">YOLO</span></li>
+              <li><span class="sk">Object detection</span></li>
+              <li><span class="sk">Face recognition</span></li>
+              <li><span class="sk">Image segmentation</span></li>
+              <li><span class="sk">Image processing</span></li>
+            </ul>
+          </div>
+          <div class="sk-group reveal">
+            <h3 class="sk-title mono">Data &amp; databases</h3>
+            <ul class="sk-list">
+              <li><span class="sk" data-ev="p-noair x-sparkix">PostgreSQL</span></li>
+              <li><span class="sk">MongoDB</span></li>
+              <li><span class="sk" data-ev="p-monetiza">MySQL</span></li>
+              <li><span class="sk">Redis</span></li>
+              <li><span class="sk" data-ev="p-grace p-oper8">Qdrant</span></li>
+              <li><span class="sk">Chroma</span></li>
+              <li><span class="sk">Pinecone</span></li>
+              <li><span class="sk">FAISS</span></li>
+              <li><span class="sk" data-ev="x-australia">Neo4j</span></li>
+              <li><span class="sk">DynamoDB</span></li>
+            </ul>
+          </div>
+          <div class="sk-group reveal">
+            <h3 class="sk-title mono">Cloud &amp; DevOps</h3>
+            <ul class="sk-list">
+              <li><span class="sk">AWS EC2</span></li>
+              <li><span class="sk">AWS S3</span></li>
+              <li><span class="sk">AWS Lambda</span></li>
+              <li><span class="sk">ECS / Fargate</span></li>
+              <li><span class="sk">CloudWatch</span></li>
+              <li><span class="sk">Azure</span></li>
+              <li><span class="sk">GCP</span></li>
+              <li><span class="sk" data-ev="x-code">Docker</span></li>
+              <li><span class="sk">GitHub Actions</span></li>
+              <li><span class="sk">Git</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · Education -->
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow mono"><span class="num">06</span>Education · 2 degrees, 4 certificate providers</p>
+          <h2 class="h2" id="education-title"><span class="h2-text">Education</span><span class="sweep" aria-hidden="true"></span></h2>
+        </div>
+        <ol class="edu">
+          <li class="edu-item reveal">
+            <p class="xp-when mono">Fall 2026 — Present</p>
+            <div class="edu-main">
+              <h3 class="xp-role">M.S. Biosystems Engineering</h3>
+              <p class="xp-org">Auburn University</p>
+              <p class="edu-note">Graduate Research Assistant under Dr. Harman Singh Sangha. Research: LiDAR-based tree inventory and a digital forest twin.</p>
+            </div>
+            <p class="edu-fig"><span class="edu-fig-v mono">In progress</span></p>
+          </li>
+          <li class="edu-item reveal">
+            <p class="xp-when mono">Aug 2021 — Jun 2025</p>
+            <div class="edu-main">
+              <h3 class="xp-role">B.Sc. Computer Systems Engineering</h3>
+              <p class="xp-org">University of Engineering and Technology, Peshawar</p>
+              <p class="edu-note">Ranked 1st in cohort (Batch Topper). Final-year project: <a href="#p-neuro">NeuroSpeakMate</a>, an AI-driven platform that supports non-verbal autistic individuals with multimodal communication using emotion detection and LLMs.</p>
+            </div>
+            <p class="edu-fig"><span class="edu-fig-n">3.89</span><span class="mono">CGPA / 4.0</span></p>
+          </li>
+        </ol>
+
+        <h3 class="sub-label mono certs-title reveal">Certificates</h3>
+        <div class="certs">
+          <div class="cert reveal">
+            <p class="cert-org">Coursera · DeepLearning.AI <span class="mono">2019–2022</span></p>
+            <ul>
+              <li>Python for Data Science, AI &amp; Development</li>
+              <li>Machine Learning Specialization (3 courses)</li>
+              <li>Deep Learning Specialization (5 courses)</li>
+              <li>Natural Language Processing Specialization (4 courses)</li>
+            </ul>
+          </div>
+          <div class="cert reveal">
+            <p class="cert-org">Activeloop <span class="mono">2023–2024</span></p>
+            <ul>
+              <li>LangChain &amp; Vector Databases in Production</li>
+              <li>RAG for Production with LangChain &amp; LlamaIndex</li>
+            </ul>
+          </div>
+          <div class="cert reveal">
+            <p class="cert-org">Udemy <span class="mono">2023–2024</span></p>
+            <ul>
+              <li>Complete Generative AI Course with LangChain &amp; HuggingFace</li>
+              <li>LangGraph</li>
+            </ul>
+          </div>
+          <div class="cert reveal">
+            <p class="cert-org">GreatLearning <span class="mono">2019–2020</span></p>
+            <ul>
+              <li>NumPy</li>
+              <li>Pandas</li>
+              <li>Matplotlib</li>
+              <li>Seaborn</li>
+              <li>spaCy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · Contact -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <p class="eyebrow mono"><span class="num">07</span>Contact</p>
+        <h2 class="h2" id="contact-title"><span class="h2-text">Say hello.</span><span class="sweep" aria-hidden="true"></span></h2>
+        <div class="contact-mail reveal">
+          <a class="mail" href="mailto:hamikhan273@gmail.com">hamikhan273@gmail.com</a>
+          <button class="copy mono" type="button" data-copy="hamikhan273@gmail.com">Copy</button>
+          <span class="copy-status sr-only" aria-live="polite"></span>
+        </div>
+        <ul class="contact-links reveal">
+          <li><a class="text-link" href="https://www.linkedin.com/in/hammad-ahmad-b91ba0247" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+          <li><a class="text-link" href="https://github.com/Hamikha" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></li>
+        </ul>
+        <p class="contact-local mono reveal">Auburn, Alabama <span class="sep">·</span> <span class="clock">Central Time</span></p>
+      </div>
     </section>
   </main>
 
-  <footer>Hammad Ahmad · AI Engineer · Islamabad, Pakistan · 2025</footer>
-  <script src="shared.js"></script>
+  <footer class="site-footer">
+    <div class="wrap footer-inner mono">
+      <p>© 2026 Hammad Ahmad</p>
+      <p class="footer-mid">Hand-built. The point cloud is generated in your browser.</p>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
 </body>
 </html>
